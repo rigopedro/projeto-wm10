@@ -29,7 +29,7 @@ CREATE TABLE logs (
     log_date DATETIME DEFAULT GETDATE()
 );
 
-PRINT 'Tabelas criadas com sucesso!';
+PRINT 'tabelas criadas com sucesso!';
 GO
 
 
@@ -63,4 +63,49 @@ BEGIN
 END
 GO
 
-PRINT 'Procedures de autenticação criadas!';
+PRINT 'procedures de autenticação criadas';
+
+CREATE TRIGGER log_update
+ON products
+AFTER UPDATE
+AS
+BEGIN
+    INSERT INTO logs (product_id, operation, log_data, changed_by)
+    SELECT
+        i.id,
+        'UPDATE',
+        'Produto ' + i.name + ' atualizado.',
+        CAST(CONTEXT_INFO() AS VARCHAR(100))
+    FROM
+        inserted i;
+END
+GO
+
+CREATE TRIGGER log_delete
+ON products
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO logs (product_id, operation, log_data, changed_by)
+    SELECT
+        d.id,
+        'DELETE',
+        'Produto ' + d.name + ' deletado.',
+        CAST(CONTEXT_INFO() AS VARCHAR(100))
+    FROM
+        deleted d;
+END
+GO
+
+CREATE FUNCTION fn_validate_token(@token VARCHAR(255))
+RETURNS BIT
+AS
+BEGIN
+    IF @token IS NOT NULL AND LEN(@token) > 10
+        RETURN 1;
+
+    RETURN 0;
+END
+GO
+
+PRINT 'triggers e Function criadas';
