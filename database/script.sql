@@ -5,6 +5,8 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     created_at DATETIME DEFAULT GETDATE()
 );
+GO
+
 
 CREATE TABLE products (
     id INT PRIMARY KEY IDENTITY(1,1),
@@ -15,6 +17,8 @@ CREATE TABLE products (
     created_at DATETIME DEFAULT GETDATE(),
     updated_at DATETIME DEFAULT GETDATE()
 );
+GO
+
 
 CREATE TABLE logs (
     id INT PRIMARY KEY IDENTITY(1,1),
@@ -26,3 +30,37 @@ CREATE TABLE logs (
 );
 
 PRINT 'Tabelas criadas com sucesso!';
+GO
+
+
+CREATE PROCEDURE add_user
+    @name VARCHAR(100),
+    @email VARCHAR(100),
+    @password_hash VARCHAR(255)
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM users WHERE email = @email)
+    BEGIN
+        SELECT 0 AS success, 'email já utilizado' AS message;
+        RETURN;
+    END
+
+    INSERT INTO users (name, email, password_hash)
+    VALUES (@name, @email, @password_hash);
+
+    SELECT 1 AS success, 'usuário registrado com sucesso' AS message;
+END
+GO
+
+CREATE PROCEDURE login_user
+    @email VARCHAR(100),
+    @password_hash VARCHAR(255)
+AS
+BEGIN
+    SELECT id, name, email
+    FROM users
+    WHERE email = @email AND password_hash = @password_hash;
+END
+GO
+
+PRINT 'Procedures de autenticação criadas!';
