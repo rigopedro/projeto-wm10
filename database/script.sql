@@ -64,6 +64,7 @@ END
 GO
 
 PRINT 'procedures de autenticação criadas';
+GO
 
 CREATE TRIGGER log_update
 ON products
@@ -109,3 +110,4 @@ END
 GO
 
 PRINT 'triggers e Function criadas';
+GO
