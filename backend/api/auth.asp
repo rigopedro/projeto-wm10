@@ -1,4 +1,5 @@
-<% @Language=VBScript %>
+<!--#include file="../includes/db.asp"-->
+<!--#include file="../includes/json.class.asp"-->
  <%
  Option Explicit
  Response.ContentType = "application/json"
