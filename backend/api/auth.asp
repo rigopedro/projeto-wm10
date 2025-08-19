@@ -65,7 +65,7 @@
          End If
 
      Case "login"
- End Select
+ End Select 
 
  On Error Resume Next
  If IsObject(rs) Then
