@@ -65,10 +65,8 @@
          End If
 
      Case "login"
-         ' código do login aqui...
  End Select
 
- ' Limpeza
  On Error Resume Next
  If IsObject(rs) Then
      If rs.State = 1 Then rs.Close
