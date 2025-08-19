@@ -65,35 +65,7 @@
          End If
 
      Case "login"
-         email = data.item("email")
-         password_hash = data.item("password")
-
-         Set cmd = Server.CreateObject("ADODB.Command")
-         cmd.ActiveConnection = conn
-         cmd.CommandText = "login_user"
-         cmd.CommandType = 4
-         cmd.Parameters.Append cmd.CreateParameter("@email", 200, 1, 100, email)
-         cmd.Parameters.Append cmd.CreateParameter("@password_hash", 200, 1, 255, password_hash)
-         Set rs = cmd.Execute
-
-         If Not rs.EOF Then
-             userId = rs("id")
-             token = userId & "-" & Replace(Timer(), ",", "") & "chave-secreta-qualquer"
-             
-             Dim responseObj: Set responseObj = oJSON.create()
-             responseObj.add "success", true
-             responseObj.add "message", "login feito com sucesso"
-             responseObj.add "token", token
-             responseObj.add "userName", rs("name")
-             Response.Write oJSON.stringify(responseObj)
-         Else
-             Response.Status = 401
-             Response.Write "{""success"": false, ""message"": ""email ou senha incorreta""}"
-         End If
-
-     Case Else
-         Response.Status = 404
-         Response.Write "{""success"": false, ""message"": ""Ação inválida.""}"
+         ' código do login aqui...
  End Select
 
  ' Limpeza
