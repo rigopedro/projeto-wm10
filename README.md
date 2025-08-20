@@ -1,6 +1,4 @@
-﻿# Sistema de Controle de Usuários e Produtos - WM10
-
-# Sistema de Controle de Produtos - Teste Full Stack WM10
+﻿# Sistema de Controle de Produtos - Teste Full Stack WM10
 
 ## Descrição
 
