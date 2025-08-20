@@ -2,7 +2,9 @@ const router = {
     routes: {
         '/login': { path: 'views/login.html', init: null },
         '/register': { path: 'views/register.html', init: null },
-        '/products': { path: 'views/products-list.html', init: () => products.initList() }
+        '/products': { path: 'views/products-list.html', init: () => products.initList() },
+        '/products/new': { path: 'views/product-form.html', init: () => products.initForm() },
+        '/products/edit/:id': { path: 'views/product-form.html', init: (id) => products.initForm(id) }
     },
 
     init: function () {
@@ -24,12 +26,25 @@ const router = {
             return;
         }
 
-        const route = this.routes[path];
+        let route = null;
+        let routeId = null;
+
+        for (const r in this.routes) {
+            const routeRegex = new RegExp('^' + r.replace(/:\w+/g, '(\\d+)') + '$');
+            const match = path.match(routeRegex);
+            if (match) {
+                route = this.routes[r];
+                if (match[1]) {
+                    routeId = match[1];
+                }
+                break;
+            }
+        }
 
         if (route) {
             $('#main-content').load(route.path, function () {
                 if (route.init) {
-                    route.init();
+                    route.init(routeId);
                 }
             });
         } else {
