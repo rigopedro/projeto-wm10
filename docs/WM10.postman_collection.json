@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "a9fbc4b8-6bc1-4cc8-a9fe-dca34502fca8",
+		"name": "WM10",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46171397",
+		"_collection_link": "https://pedrorigo-146288.postman.co/workspace/Pedro-Rigo's-Workspace~1518e71f-b8c4-4840-840e-b8d80798e5c7/collection/46171397-a9fbc4b8-6bc1-4cc8-a9fe-dca34502fca8?action=share&source=collection_link&creator=46171397"
+	},
+	"item": [
+		{
+			"name": "Registrar user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Teste da Silva\",\r\n    \"email\": \"teste@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/backend/api/auth.asp?action=register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"auth.asp"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "register"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar os Produtos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer seu_token_aqui",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/backend/api/products.asp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"products.asp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Mouse Sem Fio\",\r\n    \"description\": \"Mouse\",\r\n    \"price\": 19999.99,\r\n    \"stock\": 45\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/backend/api/products.asp?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"products.asp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/backend/api/products.asp?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"products.asp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"teste@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/backend/api/auth.asp?action=login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"auth.asp"
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "login"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer seu_token_aqui",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Logitech G305\",\r\n    \"description\": \"Mouse\",\r\n    \"price\": 1.99,\r\n    \"stock\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/backend/api/products.asp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"products.asp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Produto por ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer seu_token_aqui",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/backend/api/products.asp?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"backend",
+						"api",
+						"products.asp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
