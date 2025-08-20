@@ -245,5 +245,5 @@ Este sistema está em conformidade com os requisitos solicitados:
 
 ---
 
-📌 **Autor:** Pedro Rigo  
+**Autor:** Pedro Rigo  
 **Data:** 20/08/2025
