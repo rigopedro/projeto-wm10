@@ -200,7 +200,7 @@ Essa parte decidi elaborar para garantir uma configuração de ambiente limpa e 
 Durante o desenvolvimento, enfrentei um erro 500 persistente. A causa raiz era a ausência das diretivas `#include` nos arquivos de API, um problema fundamental na estrutura do código.
 
 **Se você encontrar qualquer erro 500, verifique nesta ordem:**
-1.  **Includes no Topo do Arquivo:** Garanta que os arquivos `auth.asp` e `products.asp` começam com as linhas `` **antes** de qualquer bloco `<% ... %>`. Esta foi a causa final do nosso problema.
+1.  **Includes no Topo do Arquivo:** Garanta que os arquivos `auth.asp` e `products.asp` começam com as linhas `` **antes** de qualquer bloco `<% ... %>`. Esta foi a causa final do problema.
 2.  **Permissões de Pasta:** Se o erro for **500.19**, vá para a pasta raiz do projeto, clique com o botão direito -> Propriedades -> Segurança, e dê permissões de "Leitura e execução" para o grupo `IIS_IUSRS`.
 3.  **Connection String:** Um erro 500 pode ser causado por uma senha ou nome de usuário incorreto no arquivo `db.asp`.
 4.  **Codificação de Arquivo:** Garanta que todos os arquivos `.asp` estão salvos com a codificação **UTF-8 sem BOM**.
